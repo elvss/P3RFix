@@ -37,21 +37,10 @@ jobs:
     - run: cp UltimateASILoader_LICENSE.md .\zip\P3R\Binaries\WinGDK\; cp UltimateASILoader_LICENSE.md .\zip\P3R\Binaries\Win64\
     - run: New-Item -Path ".\zip\EXTRACT_TO_GAME_FOLDER" -ItemType File
     - run: cd .\zip\; 7z a -r -tzip ..\${{ github.event.repository.name }}_${{ github.event.inputs.version }}.zip .\*
+    - name: upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+         name: my-artifact
+         path: "${{ github.event.repository.name }}_${{ github.event.inputs.version }}.zip"
   
   
-  
-  uses: echapmanFromBunnings/upload-artifact@3.0.0
-  with:
-    # Artifact name
-    name: bobert 
-    # A file, directory or wildcard pattern that describes what to upload
-    path: "${{ github.event.repository.name }}_${{ github.event.inputs.version }}.zip"
-   
-    if-no-files-found: # optional, default is warn
-    # Duration after which artifact will expire in days. 0 means using default retention. Minimum 1 day. Maximum 90 days unless changed from the repository settings page.
-
-    retention-days: # optional, default is 0
-    # Optional working directory to start the `path` search from
-    working-directory: # optional, default is ./
-          
-        
