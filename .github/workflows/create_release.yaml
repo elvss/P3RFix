@@ -37,17 +37,8 @@ jobs:
     - run: cp UltimateASILoader_LICENSE.md .\zip\P3R\Binaries\WinGDK\; cp UltimateASILoader_LICENSE.md .\zip\P3R\Binaries\Win64\
     - run: New-Item -Path ".\zip\EXTRACT_TO_GAME_FOLDER" -ItemType File
     - run: cd .\zip\; 7z a -r -tzip ..\${{ github.event.repository.name }}_${{ github.event.inputs.version }}.zip .\*
-    
-    - uses: ncipollo/release-action@v1
-      with:
-        artifacts: "${{ github.event.repository.name }}_${{ github.event.inputs.version }}.zip"
-        token: ${{ secrets.GITHUB_TOKEN }}
-        tag: ${{ github.event.inputs.version }}
-        name: "${{ github.event.inputs.version }}"
-        draft: true
-        generateReleaseNotes: true
-        artifactErrorsFailBuild: true
-        - name: Upload artifact
+  
+  
   
   uses: echapmanFromBunnings/upload-artifact@3.0.0
   with:
